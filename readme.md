@@ -69,3 +69,6 @@ This way, the function pointers will resolve without the need for a header
 ```
 #include "tests.c"
 ```
+
+# Greetings
+nnorm for ninja-starring this repo (how can you be *this* fast?!)
