@@ -14,7 +14,7 @@ Include `testoasterror.h` and compile `testoasterror.c` with your testing `main(
 
 Declare an array of `bool` to hold the results of each tested expression.
 Its size determines the maximum number of expression checks for the same test.
-If one outreaches that limit, testoasterror will print a "fail overflow" message
+If one outreaches that limit, testoasterror will print a "fail overflow" message.
 The limit is 255, the maximum for a `uint8_t`.
 ```
 bool results[255];
