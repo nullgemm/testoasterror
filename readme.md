@@ -10,12 +10,12 @@ Run `make` and `make run`. This will execute the example in the `test` folder.
 Check out the `test` folder
 
 ## Details
-Include testoasterror.h and compile testoasterror.c with your testing `main()`.
+Include `testoasterror.h` and compile `testoasterror.c` with your testing `main()`.
 
 Declare an array of `bool` to hold the results of each tested expression.
 Its size determines the maximum number of expression checks for the same test.
 If one outreaches that limit, testoasterror will print a "fail overflow" message
-The limit is 255, the size of a (uint8_t).
+The limit is 255, the size of a `uint8_t`.
 ```
 bool results[255];
 ```
@@ -64,7 +64,7 @@ void test1(struct testoasterror* test)
 ```
 
 It is, in my opinion, a good idea to include them directly with the `main()`.
-This way, the function pointers will resolve without the need for a header file
+This way, the function pointers will resolve without the need for a header
 (hence the include guards in the C file example above)
 ```
 #include "tests.c"
