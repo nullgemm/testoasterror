@@ -3,11 +3,11 @@ Testoasterror is a minimalistic testing library. It is written in C99
 and does not use dynamic memory allocations by default.
 
 # Testing
-Run `make` and `make run`. This will execute the example in the `test` folder.
+Run `make` and `make run`. This will execute the example in the `tests` folder.
 
 # Using
 ## TL;DR
-Check out the `test` folder
+Check out the `tests` folder
 
 ## Details
 Include `testoasterror.h` and compile `testoasterror.c` with your testing `main()`.

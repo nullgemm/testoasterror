@@ -7,12 +7,12 @@ VALGRIND = --show-leak-kinds=all --track-origins=yes --leak-check=full
 BIND = bin
 OBJD = obj
 SRCD = src
-TEST = test
+TESTS = tests
 
 INCL = -I$(SRCD)
 
 SRCS = $(SRCD)/testoasterror.c
-SRCS+= $(TEST)/main.c
+SRCS+= $(TESTS)/main.c
 
 OBJS:= $(patsubst %.c,$(OBJD)/%.o,$(SRCS))
 
