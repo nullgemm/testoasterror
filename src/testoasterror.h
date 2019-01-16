@@ -15,8 +15,12 @@ struct testoasterror
 	bool* results_cur;
 	bool* results_end;
 
-	// whether the function made too much tests for the results array to hold
+	// whether the function made too much tests for the results array
 	bool failoverflow; // <3
+
+	// execution fail
+	bool failexec;
+	uint16_t count;
 
 	// test functions
 	void (**funcs)(struct testoasterror*);
@@ -33,5 +37,7 @@ void testoasterror_init(
 	uint16_t count);
 bool testoasterror_run(struct testoasterror* test);
 bool testoasterror(struct testoasterror* test, bool expr);
+void testoasterror_count(struct testoasterror* test, uint16_t count);
+void testoasterror_fail(struct testoasterror* test);
 
 #endif

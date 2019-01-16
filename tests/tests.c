@@ -18,7 +18,19 @@ void test2(struct testoasterror* test)
 
 void test3(struct testoasterror* test)
 {
-	testoasterror(test, strcmp("fuck", "shit") == 0);
+	bool res;
+
+	testoasterror_count(test, 2);
+
+	res = testoasterror(test, strcmp("fuck", "shit") == 0);
+
+	if (!res)
+	{
+		testoasterror_fail(test);
+		return;
+	}
+
+	testoasterror(test, 0 == 0);
 }
 
 #endif

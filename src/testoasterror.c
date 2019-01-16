@@ -50,6 +50,14 @@ bool testoasterror_log(struct testoasterror* test)
 		fprintf(stderr, "\n");
 	}
 
+	if (test->failexec)
+	{
+		fprintf(
+			stderr,
+			"aborted before expression: %u\n",
+			test->count);
+	}
+
 	// expressions summary
 	fprintf(
 		stderr, 
@@ -84,6 +92,8 @@ bool testoasterror_run(struct testoasterror* test)
 		// resets the expr results
 		test->results_cur = test->results;
 		test->failoverflow = false;
+		test->failexec = false;
+		test->count = 0;
 
 		// runs the test
 		test->funcs_index = i;
@@ -97,6 +107,10 @@ bool testoasterror_run(struct testoasterror* test)
 		if (test->failoverflow == true)
 		{
 			result = "encountered a fail overflow";
+		}
+		else if (test->failexec == true)
+		{
+			result = "aborted";
 		}
 		else
 		{
@@ -131,4 +145,26 @@ bool testoasterror(struct testoasterror* test, bool expr)
 	}
 
 	return expr;
+}
+
+// saves the number of tests performed when the set can fail at execution
+void testoasterror_count(struct testoasterror* test, uint16_t count)
+{
+	test->count = count;
+}
+
+// handles set execution fails
+void testoasterror_fail(struct testoasterror* test)
+{
+	uint16_t start = test->results_cur - test->results;
+
+	// auto-fails the remaining tests
+	for (uint16_t i = start; i < test->count; ++i)
+	{
+		testoasterror(test, false);
+	}
+
+	// saves the last test before we abort
+	test->count = start;
+	test->failexec = true;
 }
