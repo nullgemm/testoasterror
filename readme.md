@@ -70,5 +70,15 @@ This way, the function pointers will resolve without the need for a header
 #include "tests.c"
 ```
 
+To abort, specify the number of tests in the function with
+```
+testoasterror_count(test, 42);
+```
+
+When appropriate, you can then call
+```
+testoasterror_fail(test);
+```
+
 # Greetings
 nnorm for ninja-starring this repo (how can you be *this* fast?!)
