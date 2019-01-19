@@ -100,7 +100,9 @@ bool testoasterror_run(struct testoasterror* test)
 		test->funcs[i](test);
 
 		// outputs info (a fail overflow is considered a fail)
-		func_passed = testoasterror_log(test) && !test->failoverflow;
+		func_passed = testoasterror_log(test)
+			&& !test->failoverflow
+			&& !test->failexec;
 		tests_passed += func_passed;
 
 		// generates a message describing the test results
@@ -156,15 +158,7 @@ void testoasterror_count(struct testoasterror* test, uint16_t count)
 // handles set execution fails
 void testoasterror_fail(struct testoasterror* test)
 {
-	uint16_t start = test->results_cur - test->results;
-
-	// auto-fails the remaining tests
-	for (uint16_t i = start; i < test->count; ++i)
-	{
-		testoasterror(test, false);
-	}
-
 	// saves the last test before we abort
-	test->count = start;
+	test->count = test->results_cur - test->results;
 	test->failexec = true;
 }

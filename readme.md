@@ -75,7 +75,7 @@ To abort, specify the number of tests in the function with
 testoasterror_count(test, 42);
 ```
 
-When appropriate, you can then call
+When appropriate, you can then call the fail function *and return*
 ```
 testoasterror_fail(test);
 ```
