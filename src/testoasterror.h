@@ -17,10 +17,8 @@ struct testoasterror
 
 	// whether the function made too much tests for the results array
 	bool failoverflow; // <3
-
 	// execution fail
 	bool failexec;
-	uint16_t count;
 
 	// test functions
 	void (**funcs)(struct testoasterror*);

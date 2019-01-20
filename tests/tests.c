@@ -20,8 +20,6 @@ void test3(struct testoasterror* test)
 {
 	bool res;
 
-	testoasterror_count(test, 2);
-
 	res = testoasterror(test, strcmp("fuck", "shit") == 0);
 
 	if (!res)

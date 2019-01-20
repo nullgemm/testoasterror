@@ -55,7 +55,7 @@ bool testoasterror_log(struct testoasterror* test)
 		fprintf(
 			stderr,
 			"aborted before expression: %u\n",
-			test->count);
+			max);
 	}
 
 	// expressions summary
@@ -93,7 +93,6 @@ bool testoasterror_run(struct testoasterror* test)
 		test->results_cur = test->results;
 		test->failoverflow = false;
 		test->failexec = false;
-		test->count = 0;
 
 		// runs the test
 		test->funcs_index = i;
@@ -149,16 +148,8 @@ bool testoasterror(struct testoasterror* test, bool expr)
 	return expr;
 }
 
-// saves the number of tests performed when the set can fail at execution
-void testoasterror_count(struct testoasterror* test, uint16_t count)
-{
-	test->count = count;
-}
-
 // handles set execution fails
 void testoasterror_fail(struct testoasterror* test)
 {
-	// saves the last test before we abort
-	test->count = test->results_cur - test->results;
 	test->failexec = true;
 }
