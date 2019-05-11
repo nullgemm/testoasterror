@@ -3,10 +3,13 @@
 // source include
 #include "tests.c"
 
+#define COUNT_RESULTS 2
+#define COUNT_FUNCS 3
+
 int main()
 {
-	bool results[2];
-	void (*funcs[3])(struct testoasterror*) =
+	bool results[COUNT_RESULTS];
+	void (*funcs[COUNT_FUNCS])(struct testoasterror*) =
 	{
 		test1,
 		test2,
@@ -14,7 +17,7 @@ int main()
 	};
 
 	struct testoasterror test;
-	testoasterror_init(&test, results, 2, funcs, 3);
+	testoasterror_init(&test, results, COUNT_RESULTS, funcs, COUNT_FUNCS);
 	testoasterror_run(&test);
 
 	return 0;
